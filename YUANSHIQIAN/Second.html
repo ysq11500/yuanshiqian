@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YUAN SHIQIAN</title>
+<!-- HTML结构：定义了页面的基本结构，包括标题、文本和装饰元素。
+CSS样式：设置了页面的样式，包括背景、容器布局、标题样式、文本样式和装饰元素样式。
+背景设置：使用background-image属性设置背景图片，并使用background-size和background-position属性确保图片覆盖整个页面且居中显示。
+容器布局：使用Flexbox布局使容器内容垂直和水平居中，并设置半透明背景以增强对比度。
+标题和文本样式：设置字体大小、颜色和阴影，以提高可读性。
+装饰元素：添加四个装饰元素，分别位于页面的四个角落，使用绝对定位来控制它们的位置。 -->
+<style>
+    /* 设置页面的基本字体和背景样式 */
+    body {
+        font-family: Arial, sans-serif; /* 使用Arial字体 */
+        margin: 0; /* 移除默认的边距 */
+        padding: 0; /* 移除默认的内边距 */
+        background-image: url('./img/图.png'); /* 设置背景图片 */
+        background-size: cover; /* 背景图片覆盖整个页面 */
+        background-position: center; /* 背景图片居中显示 */
+        background-repeat: no-repeat; /* 背景图片不重复 */
+        color: #fff; /* 设置字体颜色为白色 */
+    }
+    /* 设置容器的样式，使其垂直和水平居中 */
+    .container {
+        display: flex; /* 使用Flexbox布局 */
+        flex-direction: column; /* 垂直排列子元素 */
+        align-items: center; /* 水平居中对齐 */
+        justify-content: center; /* 垂直居中对齐 */
+        height: 100vh; /* 高度设置为视口高度 */
+        padding: 20px; /* 添加内边距 */
+        box-sizing: border-box; /* 包括内边距和边框在内的总宽度和高度 */
+        background-color: rgba(0, 0, 0, 0.5); /* 设置半透明背景 */
+    }
+    /* 设置标题的样式 */
+    .title {
+        font-size: 48px; /* 设置字体大小 */
+        color: #fff; /* 设置字体颜色为白色 */
+        margin-bottom: 20px; /* 设置下边距 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+    }
+    /* 设置文本的样式 */
+    .text {
+        font-size: 20px; /* 设置字体大小 */
+        color: #fff; /* 设置字体颜色为白色 */
+        line-height: 1.6; /* 设置行高 */
+        text-align: center; /* 设置文本居中 */
+        margin-bottom: 40px; /* 设置下边距 */
+        max-width: 600px; /* 设置最大宽度 */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* 添加文字阴影 */
+    }
+    /* 设置装饰元素的样式 */
+    .decoration {
+        width: 50px; /* 设置宽度 */
+        height: 50px; /* 设置高度 */
+        background-color: #b57edc; /* 设置背景颜色 */
+        position: absolute; /* 设置绝对定位 */
+    }
+    /* 设置顶部左侧装饰元素的位置 */
+    .decoration.top-left {
+        top: 20px; /* 设置上边距 */
+        left: 20px; /* 设置左边距 */
+    }
+    /* 设置顶部右侧装饰元素的位置 */
+    .decoration.top-right {
+        top: 20px; /* 设置上边距 */
+        right: 20px; /* 设置右边距 */
+    }
+    /* 设置底部左侧装饰元素的位置 */
+    .decoration.bottom-left {
+        bottom: 20px; /* 设置下边距 */
+        left: 20px; /* 设置左边距 */
+    }
+    /* 设置底部右侧装饰元素的位置 */
+    .decoration.bottom-right {
+        bottom: 20px; /* 设置下边距 */
+        right: 20px; /* 设置右边距 */
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            YUAN<br>SHIQIAN
+        </div>
+        <div class="text">
+            エンシセン、中国出身。京都芸術大学情報デザイン学科ビジュアルデザインコース在籍。これまでさまざまなデザイン分野に取り組んできましたが、特にゲームデザインに情熱を注いでいます。バーチャルなデザインを現実の世界に実現することを目指し、日々挑戦を続けています。
+        </div>
+        <div class="decoration top-left"></div>
+        <div class="decoration top-right"></div>
+        <div class="decoration bottom-left"></div>
+        <div class="decoration bottom-right"></div>
+    </div>
+</body>
+</html>

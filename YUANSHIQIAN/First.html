@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery</title>
+<!-- HTML结构：定义了页面的基本结构，包括标题和轮播图。
+CSS样式：设置了页面的样式，包括背景、容器布局、轮播图样式、图片样式和指示器样式。
+JavaScript功能：
+初始化变量：定义了当前索引、图片集合、指示器集合、图片容器和总图片数。
+showNextImage函数：用于显示下一张图片，并更新指示器状态。
+updateIndicators函数：用于更新指示器的激活状态。
+定时器：设置了一个定时器，每5秒调用一次showNextImage函数，实现自动轮播。
+初始化轮播图：在页面加载时，设置初始的图片位置和指示器状态。
+事件监听：为每个指示器添加点击事件监听器，点击指示器时切换到对应的图片。 -->
+<style>
+    /* 设置基本的字体和背景 */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('./img/图.png'); /* 设置背景图片 */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: #000;
+    }
+    /* 设置容器居中显示 */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 20px; /* 添加内边距 */
+        box-sizing: border-box;
+    }
+    /* 设置标题样式 */
+    .title {
+        font-size: 36px;
+        color: #d8b;
+        margin-bottom: 20px;
+    }
+    /* 设置链接样式 */
+    .title a {
+        text-decoration: none; /* 去除下划线 */
+        color: inherit; /* 继承颜色 */
+    }
+    /* 设置轮播图容器样式 */
+    .carousel {
+        width: 100%; /* 宽度自适应 */
+        max-width: 600px; /* 最大宽度 */
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px; /* 圆角 */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影 */
+    }
+    /* 设置图片容器样式 */
+    .image-container {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    /* 设置图片样式 */
+    .image {
+        width: 100%; /* 宽度自适应 */
+        height: auto; /* 高度自适应 */
+        flex-shrink: 0;
+        border-radius: 10px; /* 圆角 */
+    }
+    /* 设置指示器容器样式 */
+    .indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+    }
+    /* 设置指示器样式 */
+    .indicator {
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+    /* 设置激活的指示器样式 */
+    .indicator.active {
+        opacity: 1;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <a href="Second.html">YUAN<br>SHIQIAN</a>
+        </div>
+        <div class="carousel">
+            <div class="image-container">
+                <img src="./img/9.jpg" alt="Image 2" class="image">
+                <img src="./img/8.jpg" alt="Image 3" class="image">
+                <img src="./img/6.jpg" alt="Image 3" class="image">
+                <img src="./img/7.jpg" alt="Image 3" class="image">
+            </div>
+            <div class="indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+                <div class="indicator" data-index="3"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化变量
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.image');
+        const indicators = document.querySelectorAll('.indicator');
+        const imageContainer = document.querySelector('.image-container');
+        const totalImages = images.length;
+
+        // 定义显示下一张图片的函数
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateIndicators();
+        }
+
+        // 定义更新指示器状态的函数
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // 设置定时器，每5秒切换到下一张图片
+        setInterval(showNextImage, 5000);
+
+        // 初始化轮播图位置和指示器状态
+        imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        updateIndicators();
+
+        // 监听指示器点击事件，切换到对应的图片
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                currentIndex = parseInt(indicator.getAttribute('data-index'));
+                imageContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateIndicators();
+            });
+        });
+    </script>
+</body>
+</html>
